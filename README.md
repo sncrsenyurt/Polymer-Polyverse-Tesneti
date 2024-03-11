@@ -1,176 +1,154 @@
-# Polymer Polyverse Testnet Rehberi
+# Polymer Polyverse Testnet Guide
 
 ![polymer](https://pbs.twimg.com/media/GHrV-BVaUAA5qFd?format=jpg&name=medium)
 
-
-
-## Sistem gereksinimleri:
+## System Requirements:
 
 **Ubuntu 22.04+**
 
-NODE TİPİ | CPU     | RAM      | SSD     |
+NODE TYPE | CPU     | RAM      | SSD     |
 | ------------- | ------------- | ------------- | -------- |
 | Polyverse | 2          | 2         | 40  |
   
   
 
-**Gerekli Güncellemeler ve Kurulum**
+**Required Updates and Installations**
 
-```
+```bash
 sudo apt update && sudo apt upgrade -y
 ```
-```
+```bash
 sudo apt-get install -y ca-certificates curl gnupg
 ```
-```
+```bash
 sudo mkdir -p /etc/apt/keyrings
 ```
-```
+```bash
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 ```
-```
+```bash
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 ```
-```
+```bash
 sudo apt-get update
 ```
-```
+```bash
 sudo apt-get install -y nodejs
 ```
 
 
-**Git Yüklüyoruz.**
+**Installing Git**
 
-```
+```bash
 sudo apt-get install git
 ```
 
 
-**Repoyu indirelim**
-```
+**Clone the Repository**
+```bash
 git clone https://github.com/sarox0987/polymerlab-ibc-app-solidity.git
 ```
-```
+```bash
 cd polymerlab-ibc-app-solidity
 ```
 
-**Optimism ve Base Sepolia Faucet**
+**Optimism and Base Sepolia Faucets**
 
-> Optimism Sepolia için [BURADAN](https://www.alchemy.com/faucets/optimism-sepolia) fauceti kullanabilirsiniz.
+> You can use the faucet for [Optimism Sepolia](https://www.alchemy.com/faucets/optimism-sepolia) here.
 
-> Base Sepolia için [BURADAN](https://www.alchemy.com/faucets/base-sepolia) fauceti kullanabilirsiniz.
+> You can use the faucet for [Base Sepolia](https://www.alchemy.com/faucets/base-sepolia) here.
 
-> Bu iki fauceti kullanarak, işlem yapacağınız test cüzdanında yeterli ETH olmasına dikkat edin.
+> Ensure that your test wallet has sufficient ETH by using these two faucets.
 
-**Alchemy RPC alma**
+**Get Alchemy RPC**
 
-> [BURADAN](https://alchemy.com/?r=b9d675bdc6edda35) Alchemy sitesine gidiyoruz. Gmail ile oturum açıyoruz.
+> Go to the Alchemy website [here](https://alchemy.com/?r=b9d675bdc6edda35) and sign in with Gmail.
 
-> Burada Optimism ve Base Sepolia için Public RPC alıyoruz.
+> Get the Public RPC for both Optimism and Base Sepolia.
 
-![Ekran görüntüsü 2024-03-09 012918](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/701c5d2a-74dd-498c-a85e-a2ce941cdf81)
+> Go to the App section and click on "Create App";
 
-> App bölümüne geliyoruz. Create App diyoruz;
+> Choose Optimism and select Optimism Sepolia as the network. Add a name and description for the app and click on Create App.
 
-![Ekran görüntüsü 2024-03-09 013116](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/0bf9bb01-853f-4587-b751-621fc9a41803)
+> Repeat the same steps for Base Sepolia. In short, you should have two different RPCs.
 
-> Burada Optimism seçiyoruz. Network olarak Optimism Sepolia seçiyoruz. App bir isim ve açıklama ekleyip Create App diyoruz.
+> Click on the API Key button.
 
-![Ekran görüntüsü 2024-03-09 013259](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/c4377cc0-1c69-4c92-9340-e295ecb940ad) 
+> Copy the API key in the first line to somewhere. Similarly, get an API Key for Base Sepolia and note it down.
 
+**Get Metamask Private Key**
 
-> Aynı adımları Base Sepolia ağı içinde yapıyoruz. Kısaca elimizde iki farklı RPC olması gerekiyor.
+> Follow the steps in the image to get the private key of your Metamask wallet and note it down.
 
-![Ekran görüntüsü 2024-03-09 013542](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/e52f2d86-1fc0-432f-b311-cfe4c7c99c37)
+**Just Installation**
 
-> API Key butonuna basıyoruz.
-
-![Ekran görüntüsü 2024-03-09 013714](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/612db66f-a03f-47c6-a93d-5d9fdd171a68)
-
-> Burada ilk satırda olan API key bir yere not ediyoruz. Aynı şekilde Base Sepolia içinde Apı Key alıp bir yere not ediyoruz.
-
-**Metamask Private Key alma**
-
-> Görseldeki adımları takip ederek, metamask cüzdanınızın private key'ini alıp bir yere not edin.
-
-![metmask](https://user-images.githubusercontent.com/111747226/214062437-69e144d9-528f-4a17-b46a-a747c1d5284c.png)
-
-
-**Just Kuralım**
-
-```
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 ```
 
-**Forge Kuralım**
+**Forge Installation**
 
-```
+```bash
 curl -L https://foundry.paradigm.xyz | bash
 ```
-```
+```bash
 source /root/.bashrc
 ```
-```
+```bash
 foundryup
 ```
-```
+```bash
 forge build
 ```
 
 
-**env dosyasını düzenleyelim**
+**Edit the env file**
 
-```
+```bash
 nano .env
 ```
 
->  `PRIVATE_KEY_1` yazan yere tırnaklar içinde metamaskımızdan aldığımız private key ekliyoruz.
+> Add the private key you obtained from Metamask to the place marked as `PRIVATE_KEY_1`.
 
-> `OP_ALCHEMY_API_KEY`yazan yere tırnaklar içinde Alchemy'den aldığımız Optimisim Sepolia API keyi yazıyoruz.
+> For the places marked as `OP_ALCHEMY_API_KEY` and `BASE_ALCHEMY_API_KEY`, add the API keys you obtained from Alchemy for Optimism Sepolia and Base Sepolia respectively.
 
-> `BASE_ALCHEMY_API_KEY`yazan yere tırnaklar içinde Alchemy'den aldığımız Base Sepolia API keyi yazıyoruz.
+> After editing, save and exit by pressing Ctrl + X, then Y, and finally Enter.
 
-> Düzenlemeyi bitirdikten sonra Ctrl X Y sonra enter diyerek kayıt edip çıkıyoruz.
+**Install IBC Transfer and Contracts**
 
-![Ekran görüntüsü 2024-03-09 015338](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/ddd16905-427d-4290-b128-a7c2daf56875)
-
-
-**IBC Transferi ve Kontratları Çalıştırma**
-```
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
-```
+```bash
 source ~/.bashrc
 ```
-```
+```bash
 nvm install 18
 ```
-```
+```bash
 nvm use 18
 ```
-```
+```bash
 npm install
 ```
 
-```
+```bash
 just install
 ```
 
-```
+```bash
 just do-it
 ```
-> Aşağıdakine benzer sonuç elde edeceksiniz. Hem Optimism hemde Base için olan linkleri bir yere not edin.
+> You will get a similar result as below. Note down the links for both Optimism and Base.
 
-![Ekran görüntüsü 2024-03-09 015615](https://github.com/CoinHuntersTR/Polymer-Polyverse-Tesneti/assets/111747226/8483d2d2-ced3-4fcf-b8bd-12b30c2e8e7b)
-
-**Hata Alırsan**
-```
+**If You Encounter an Error**
+```bash
 npx hardhat clean
 ```
-> bunu yaptıktan sonra tekrardan `just do-it` komutunu çalıştırabilirsin.
+> After this, you can rerun the command `just do-it`.
 
-**Polyverse Devs Discord Rolü Alma**
+**Getting the Polyverse Devs Discord Role**
 
-> Bu rolü almak için önce discord kanallarına giriyoruz. Eğer hala girmediyseniz. [BURADAN](https://discord.gg/DEedJybQqG) katılıyoruz. Verify adımını yaptıktan sonra `proof` kanalına orada paylaşılanlara benzer şekilde, ekran resmi ve linkleri paylaştığınızda `Polyverse Devs` rolünü alabilirsiniz. Testnet süresince ne değeri olur bilemem.
+> To get this role, first join the Discord channels. If you haven't joined yet, you can join [here](https://discord.gg/DEedJybQqG). Complete the Verify step, then in the `proof` channel, share a screenshot and links similar to those shared there to obtain the `Polyverse Devs` role. The value of this role during the testnet period is unknown.
 
-> Ayrıca kafanıza takılan sorular ve geri dönüşler için [BURADAN](https://t.me/PolymerTurkiye) telegram grubumuza katılabilirsiniz.
+Please do not modify this text as it will be used for the GitHub readme file.
