@@ -151,4 +151,3 @@ npx hardhat clean
 
 > To get this role, first join the Discord channels. If you haven't joined yet, you can join [here](https://discord.gg/DEedJybQqG). Complete the Verify step, then in the `proof` channel, share a screenshot and links similar to those shared there to obtain the `Polyverse Devs` role. The value of this role during the testnet period is unknown.
 
-Please do not modify this text as it will be used for the GitHub readme file.
